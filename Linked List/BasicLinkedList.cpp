@@ -5,24 +5,22 @@ using namespace std;
 
 class Node
 {
-    public:
-    int data;    
-     Node * next;
+public:
+    int data;
+    Node *next;
     Node(int data1)
     {
-        data=data1;
-        next==NULL;
+        data = data1;
+        next == NULL;
     }
-}*head=NULL,*temp;
-
+} *head = NULL, *temp;
 
 class LinkedList
 {
-    public:
-     
+public:
     bool isEmpty()
     {
-        if(head==NULL)
+        if (head == NULL)
         {
             return true;
         }
@@ -34,212 +32,193 @@ class LinkedList
 
     void insertStart(int data)
     {
-        Node * newnode=new Node(data);
-        newnode->data=data;
-        if(head==NULL)
+        Node *newnode = new Node(data);
+        newnode->data = data;
+        if (head == NULL)
         {
-            head=newnode;
-            newnode->next=NULL;
+            head = newnode;
+            newnode->next = NULL;
         }
         else
         {
-            newnode->next=head;
-            head=newnode;
+            newnode->next = head;
+            head = newnode;
         }
     }
-
 
     void insertAfterValue(int data1, int value)
     {
-        Node *newnode=new Node(data1);
-        
-        if(head==NULL)
+        Node *newnode = new Node(data1);
+
+        if (head == NULL)
         {
-            head=newnode;
-            newnode->next=NULL;
+            head = newnode;
+            newnode->next = NULL;
         }
         else
         {
-            Node * p=NULL;
-            p=head;
-            while(p!= NULL && p->data!=value)
+            Node *p = NULL;
+            p = head;
+            while (p != NULL && p->data != value)
             {
-                p=p->next;
+                p = p->next;
             }
-            newnode->next=p->next;
-            p->next=newnode;
+            newnode->next = p->next;
+            p->next = newnode;
         }
     }
-
 
     void insertBeforeValue(int data1, int value)
     {
-        Node *newnode=new Node(data1);
-        if(head==NULL)
+        Node *newnode = new Node(data1);
+        if (head == NULL)
         {
-            head=newnode;
-            newnode->next=NULL;
+            head = newnode;
+            newnode->next = NULL;
         }
         else
         {
-            Node *p,*q;
-            q=NULL;
-            p=head;
-            while(p->next->data!=value)
+            Node *p, *q;
+            q = NULL;
+            p = head;
+            while (p->next->data != value)
             {
-                p=p->next;
+                p = p->next;
             }
-            newnode->next=p->next;
-            p->next=newnode;
+            newnode->next = p->next;
+            p->next = newnode;
         }
     }
-
-
 
     void insertEnd(int data)
     {
-        Node *newnode= new Node(data);
+        Node *newnode = new Node(data);
         Node *p;
-        p=head;
-        if(head==NULL)
+        p = head;
+        if (head == NULL)
         {
-            head=newnode;
-            newnode->next=NULL;
+            head = newnode;
+            newnode->next = NULL;
         }
         else
 
         {
-            while (p->next!=NULL)
+            while (p->next != NULL)
             {
-                p=p->next;
+                p = p->next;
             }
-            p->next=newnode;
-            newnode->next=NULL;
+            p->next = newnode;
+            newnode->next = NULL;
         }
-        
     }
-
 
     int deleteStart()
     {
-        if(head==NULL)
+        if (head == NULL)
         {
             return 0;
         }
         else
         {
-            Node *p=head;
-            head=head->next;
-            int x=p->data;
+            Node *p = head;
+            head = head->next;
+            int x = p->data;
             delete p;
             return x;
         }
-
     }
 
     int deleteMiddle(int value)
     {
-        if(head==NULL)
+        if (head == NULL)
         {
             return 0;
         }
         else
         {
-            Node *p=head,*q=NULL;
-            while(p->data!=value)
+            Node *p = head, *q = NULL;
+            while (p->data != value)
             {
-                q=p;
-                p=p->next;
+                q = p;
+                p = p->next;
             }
-            q->next=p->next;
-            int x=p->data;
+            q->next = p->next;
+            int x = p->data;
             delete p;
             return x;
-
         }
     }
-
 
     int deleteEnd()
     {
-        if(head==NULL)
+        if (head == NULL)
         {
             return 0;
         }
         else
         {
-            Node *p=head;
-            while(p->next->next!=NULL)
+            Node *p = head;
+            while (p->next->next != NULL)
             {
-                p=p->next;
-                
+                p = p->next;
             }
-            int x=p->next->data;
-            p->next=NULL;
+            int x = p->next->data;
+            p->next = NULL;
             return x;
         }
     }
-
 
     int searching(int value)
     {
-        if(head==NULL)
+        if (head == NULL)
         {
             return 0;
-
         }
         else
         {
-            Node *p=head;
-            
-            while(p->data!=value)
-            {
-                p=p->next;
-            }
-            int x=p->data;
-            cout<<x<<" is Present in the LinkedList"<<endl;
-            return x;
+            Node *p = head;
 
+            while (p->data != value)
+            {
+                p = p->next;
+            }
+            int x = p->data;
+            cout << x << " is Present in the LinkedList" << endl;
+            return x;
         }
     }
-
-
 
     void reverseLL()
     {
-        if(head==NULL)
+        if (head == NULL)
         {
-            cout<<head;
+            cout << head;
         }
         else
         {
-            Node *p,*q,*r;  //SLIDING POINTERS used to reverse a linked list.p is the head,q and r are null.move r to q ;q to p and p to the next node.continue this process till p becomes null.all the three pointers appears to slide on the linklist.when p is null;assign the node on which q (last node) is there as head. and pointthe next of q on r after every increment in node.
-            p=head;
-            q=r=NULL;
-            while(p!=NULL)
+            Node *p, *q, *r; // SLIDING POINTERS used to reverse a linked list.p is the head,q and r are null.move r to q ;q to p and p to the next node.continue this process till p becomes null.all the three pointers appears to slide on the linklist.when p is null;assign the node on which q (last node) is there as head. and pointthe next of q on r after every increment in node.
+            p = head;
+            q = r = NULL;
+            while (p != NULL)
             {
-                r=q;
-                q=p;
-                p=p->next;
-                q->next=r;
+                r = q;
+                q = p;
+                p = p->next;
+                q->next = r;
             }
-            head=q;
+            head = q;
         }
     }
 
-
-
-    void printLL(Node * head)
+    void printLL(Node *head)
     {
-        while(head!=NULL)
+        while (head != NULL)
         {
-            cout<<head->data<<" "<<endl;
-            head=head->next;
+            cout << head->data << " " << endl;
+            head = head->next;
         }
     }
 };
-
-
 
 int main()
 {
@@ -253,10 +232,10 @@ int main()
     LL.insertEnd(50);
     LL.printLL(head);
 
-    LL.insertAfterValue(30,60);
+    LL.insertAfterValue(30, 60);
     LL.printLL(head);
 
-    LL.insertBeforeValue(100,20);
+    LL.insertBeforeValue(100, 20);
     LL.printLL(head);
 
     LL.deleteStart();

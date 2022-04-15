@@ -81,158 +81,250 @@
 
 // C++ code for the above approach:
 
-#include <bits/stdc++.h>
-using namespace std;
+// #include <bits/stdc++.h>
+// using namespace std;
 
-// Function to find next smaller element
-vector<int> nextsmallerelement(vector<int>& arr,
-							int n)
-{
+// // Function to find next smaller element
+// vector<int> nextsmallerelement(vector<int>& arr,
+// 							int n)
+// {
 
-	stack<int> st;
+// 	stack<int> st;
 
-	// For the elements which dont have
-	// next smaller element ans will be -1
-	st.push(-1);
+// 	// For the elements which dont have
+// 	// next smaller element ans will be -1
+// 	st.push(-1);
 
-	// Store indices in output
-	vector<int> right(n);
+// 	// Store indices in output
+// 	vector<int> right(n);
 
-	// Start from last index
-	for (int i = n - 1; i >= 0; i--) {
+// 	// Start from last index
+// 	for (int i = n - 1; i >= 0; i--) {
 
-		// If top element is sorted then
-		// no need to do anyrhing, just store
-		// the answer and push the
-		// current element in stack
-		if ((st.top() != -1)
-			&& arr[st.top()] < arr[i]) {
-			right[i] = st.top();
-			st.push(i);
-		}
-		else {
-			while ((st.top() != -1)
-				&& arr[st.top()]
-						>= arr[i]) {
-				st.pop();
-			}
-			right[i] = st.top();
-			st.push(i);
-		}
-	}
-	return right;
-}
+// 		// If top element is sorted then
+// 		// no need to do anyrhing, just store
+// 		// the answer and push the
+// 		// current element in stack
+// 		if ((st.top() != -1)
+// 			&& arr[st.top()] < arr[i]) {
+// 			right[i] = st.top();
+// 			st.push(i);
+// 		}
+// 		else {
+// 			while ((st.top() != -1)
+// 				&& arr[st.top()]
+// 						>= arr[i]) {
+// 				st.pop();
+// 			}
+// 			right[i] = st.top();
+// 			st.push(i);
+// 		}
+// 	}
+// 	return right;
+// }
 
-// Function to find previous smaller element
-vector<int> previousmallerelement(vector<int>& arr,
-								int n)
-{
-	stack<int> st;
-	st.push(-1);
-	vector<int> left(n);
+// // Function to find previous smaller element
+// vector<int> previousmallerelement(vector<int>& arr,
+// 								int n)
+// {
+// 	stack<int> st;
+// 	st.push(-1);
+// 	vector<int> left(n);
 
-	// Start from first index
-	for (int i = 0; i < n; i++) {
-		if ((st.top() != -1)
-			&& arr[st.top()] < arr[i]) {
-			left[i] = st.top();
-			st.push(i);
-		}
-		else {
-			while ((st.top() != -1)
-				&& arr[st.top()]
-						>= arr[i]) {
-				st.pop();
-			}
-			left[i] = st.top();
-			st.push(i);
-		}
-	}
-	return left;
-}
+// 	// Start from first index
+// 	for (int i = 0; i < n; i++) {
+// 		if ((st.top() != -1)
+// 			&& arr[st.top()] < arr[i]) {
+// 			left[i] = st.top();
+// 			st.push(i);
+// 		}
+// 		else {
+// 			while ((st.top() != -1)
+// 				&& arr[st.top()]
+// 						>= arr[i]) {
+// 				st.pop();
+// 			}
+// 			left[i] = st.top();
+// 			st.push(i);
+// 		}
+// 	}
+// 	return left;
+// }
 
-// Function to get the maximum area
-// considering each row as the histogram base
-int getMaxArea(vector<int>& arr, int n)
-{
-	vector<int> right(n);
-	right = nextsmallerelement(arr, n);
+// // Function to get the maximum area
+// // considering each row as the histogram base
+// int getMaxArea(vector<int>& arr, int n)
+// {
+// 	vector<int> right(n);
+// 	right = nextsmallerelement(arr, n);
 
-	// Find the smallest element than
-	// curr element in right side
+// 	// Find the smallest element than
+// 	// curr element in right side
 
-	vector<int> left(n);
-	left = previousmallerelement(arr, n);
+// 	vector<int> left(n);
+// 	left = previousmallerelement(arr, n);
 
-	// Find the smallest element
-	// than curr element in left side
-	int maxarea = INT_MIN;
+// 	// Find the smallest element
+// 	// than curr element in left side
+// 	int maxarea = INT_MIN;
 
-	// Now the left and right vector have
-	// index of smallest elemnt in left and
-	// right respetively, thus the difference
-	// of right - left - 1 will give us
-	// breadth and thus
-	// area = height(curr==arr[i]) * breadth;
-	for (int i = 0; i < n; i++) {
-		int height = arr[i];
-		if (right[i] == -1) {
-			right[i] = n;
-		}
-		int breadth = right[i] - left[i] - 1;
-		maxarea = max(maxarea,
-					height * breadth);
-	}
-	return maxarea;
-}
+// 	// Now the left and right vector have
+// 	// index of smallest elemnt in left and
+// 	// right respetively, thus the difference
+// 	// of right - left - 1 will give us
+// 	// breadth and thus
+// 	// area = height(curr==arr[i]) * breadth;
+// 	for (int i = 0; i < n; i++) {
+// 		int height = arr[i];
+// 		if (right[i] == -1) {
+// 			right[i] = n;
+// 		}
+// 		int breadth = right[i] - left[i] - 1;
+// 		maxarea = max(maxarea,
+// 					height * breadth);
+// 	}
+// 	return maxarea;
+// }
 
-// Function to calculate
-// the maximum area of rectangle
-int maxRectangleArea(vector<vector<int> >& M,
-					int n, int m)
-{
+// // Function to calculate
+// // the maximum area of rectangle
+// int maxRectangleArea(vector<vector<int> >& M,
+// 					int n, int m)
+// {
 
-	// Calculate maxarea for first row
-	int area = getMaxArea(M[0], m);
-	int maxarea = area;
+// 	// Calculate maxarea for first row
+// 	int area = getMaxArea(M[0], m);
+// 	int maxarea = area;
 
-	for (int i = 1; i < n; i++) {
-		for (int j = 0; j < m; j++) {
-			if (M[i][j] != 0) {
+// 	for (int i = 1; i < n; i++) {
+// 		for (int j = 0; j < m; j++) {
+// 			if (M[i][j] != 0) {
 
-				// Add heights of previous rows
-				// into current
-				M[i][j] = M[i][j]
-						+ M[i - 1][j];
-			}
-			else {
+// 				// Add heights of previous rows
+// 				// into current
+// 				M[i][j] = M[i][j]
+// 						+ M[i - 1][j];
+// 			}
+// 			else {
 
-				// If current height is 0 then
-				// don't add previous heights
-				M[i][j] = 0;
-			}
-		}
-		maxarea = max(maxarea,
-					getMaxArea(M[i], m));
-	}
-	return maxarea;
-}
+// 				// If current height is 0 then
+// 				// don't add previous heights
+// 				M[i][j] = 0;
+// 			}
+// 		}
+// 		maxarea = max(maxarea,
+// 					getMaxArea(M[i], m));
+// 	}
+// 	return maxarea;
+// }
 
-// Driver code
-int main()
-{
-	int N = 4, M = 4;
-	vector<vector<int> > amt = {
-		{ 0, 1, 1, 0 },
-		{ 1, 1, 1, 1 },
-		{ 1, 1, 1, 1 },
-		{ 1, 1, 0, 0 },
-	};
+// // Driver code
+// int main()
+// {
+// 	int N = 4, M = 4;
+// 	vector<vector<int> > amt = {
+// 		{ 0, 1, 1, 0 },
+// 		{ 1, 1, 1, 1 },
+// 		{ 1, 1, 1, 1 },
+// 		{ 1, 1, 0, 0 },
+// 	};
 
-	cout << maxRectangleArea(amt, N, M);
-	return 0;
-}
+// 	cout << maxRectangleArea(amt, N, M);
+// 	return 0;
+// }
 
 // Time Complexity: O(N * M)
 // Auxiliary Space: O(M)
 
+
+// { Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+#define MAX 1000
+
+
+ // } Driver Code Ends
+/*You are required to complete this method*/
+
+class Solution{
+  public:
+  int MAH(int arr[], int n)
+    {
+        // Your code here
+        stack<pair<int, int> > s1;
+        stack<pair<int, int> > s2;
+        vector<int> nsr;
+        vector<int> nsl;
+        vector<int> mah;
+        for(int i=n;i>=0;i--){
+            while(s1.size()>0 && s1.top().first>=arr[i]){
+                s1.pop();
+            }
+            if(s1.empty()){
+                nsr.push_back(n);
+            }
+            else if(s1.top().first < arr[i]) nsr.push_back(s1.top().second);
+            s1.push( make_pair(arr[i],i) );   
+        }
+        reverse(nsr.begin(), nsr.end());
+        
+        for(int i=0;i<n;i++){
+            while(s2.size()>0 && s2.top().first>=arr[i]){
+                s2.pop();
+            }
+            if(s2.empty()){
+                nsl.push_back(-1);
+            }
+            else if(s2.top().first < arr[i]) nsl.push_back(s2.top().second);
+            s2.push( make_pair(arr[i],i) );   
+        }
+        
+        int maxi =0, b=0;
+        for(int i=0;i<n;i++){
+            b = arr[i]*(nsr[i]-nsl[i]-1);
+            if(b>maxi) 
+                maxi=b;
+        }
+        return maxi;
+    }
+    int maxArea(int M[MAX][MAX], int n, int m) {
+        // Your code here
+         int v[m]={0};
+        for(int j = 0;j<m;j++){
+            v[j]=M[0][j];
+        }
+        int maxi = MAH(v,m);
+        for(int i=1;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(M[i][j]==0) v[j]=0;
+                else v[j]+=1;
+            }
+            maxi=max(maxi, MAH(v,m));
+        }
+        return maxi;
+        
+    }
+};
+
+
+// { Driver Code Starts.
+int main() {
+    int T;
+    cin >> T;
+
+    int M[MAX][MAX];
+
+    while (T--) {
+        int n, m;
+        cin >> n >> m;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                cin >> M[i][j];
+            }
+        }
+        Solution obj;
+        cout << obj.maxArea(M, n, m) << endl;
+    }
+}
+  // } Driver Code Ends

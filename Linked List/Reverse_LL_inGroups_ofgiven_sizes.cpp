@@ -1,18 +1,17 @@
 // { Driver Code Starts
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
 
 struct node
 {
     int data;
-    struct node* next;
-    
-    node(int x){
+    struct node *next;
+
+    node(int x)
+    {
         data = x;
         next = NULL;
     }
-    
 };
 
 /* Function to print linked list */
@@ -26,59 +25,55 @@ void printList(struct node *node)
     printf("\n");
 }
 
-
- // } Driver Code Ends
+// } Driver Code Ends
 /*
   Reverse a linked list
-  The input list will have at least one element  
+  The input list will have at least one element
   Return the node which points to the head of the new LinkedList
-  Node is defined as 
+  Node is defined as
     struct node
     {
         int data;
         struct node* next;
-    
+
         node(int x){
             data = x;
             next = NULL;
         }
-    
+
     }*head;
 */
 
 class Solution
 {
-    public:
-    struct node *reverse (struct node *head, int k)
-    { 
+public:
+    struct node *reverse(struct node *head, int k)
+    {
         // Complete this method
-        node *cur,*prev,*nex;
-        cur=head;
-        prev=NULL;
-        int c=0;
-        while(cur!=NULL && c<k)
+        node *cur, *prev, *nex;
+        cur = head;
+        prev = NULL;
+        int c = 0;
+        while (cur != NULL && c < k)
         {
-            nex=cur->next;
-            cur->next=prev;
-            prev=cur;
-            cur=nex;
+            nex = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = nex;
             c++;
         }
-        
-        if(nex!=NULL)
+
+        if (nex != NULL)
         {
-            head->next= reverse(nex,k);
-            
+            head->next = reverse(nex, k);
         }
         return prev;
     }
-    
 };
 
 // ANALYSIS:
 // TIME: O(n)
 // SPACE: O(1)
-
 
 // { Driver Code Starts.
 
@@ -86,20 +81,20 @@ class Solution
 int main(void)
 {
     int t;
-    cin>>t;
-     
-    while(t--)
+    cin >> t;
+
+    while (t--)
     {
-        struct node* head = NULL;
-        struct node* temp = NULL;
+        struct node *head = NULL;
+        struct node *temp = NULL;
         int n;
         cin >> n;
-         
-        for(int i=0 ; i<n ; i++)
+
+        for (int i = 0; i < n; i++)
         {
             int value;
             cin >> value;
-            if(i == 0)
+            if (i == 0)
             {
                 head = new node(value);
                 temp = head;
@@ -110,16 +105,16 @@ int main(void)
                 temp = temp->next;
             }
         }
-        
+
         int k;
-        cin>>k;
-        
+        cin >> k;
+
         Solution ob;
         head = ob.reverse(head, k);
         printList(head);
     }
-     
-    return(0);
+
+    return (0);
 }
 
-  // } Driver Code Ends
+// } Driver Code Ends

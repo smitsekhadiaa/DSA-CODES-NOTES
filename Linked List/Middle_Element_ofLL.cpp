@@ -1,6 +1,4 @@
-//Return the middle element of linked list if there are 2 middle elements then return the second element
-
-
+// Return the middle element of linked list if there are 2 middle elements then return the second element
 
 /**
  * Definition for singly-linked list.
@@ -36,7 +34,7 @@
 //         for(int i=0;i<count;i++)
 //         {
 //             p=p->next;
-            
+
 //         }
 //         return p;
 //     }

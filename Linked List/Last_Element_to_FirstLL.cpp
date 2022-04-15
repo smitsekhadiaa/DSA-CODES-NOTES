@@ -6,87 +6,81 @@ using namespace std;
 
 class Node
 {
-    public:
-    int data;    
-     Node * next;
+public:
+    int data;
+    Node *next;
     Node(int data1)
     {
-        data=data1;
-        next==NULL;
+        data = data1;
+        next == NULL;
     }
-}*head=NULL,*temp;
-
+} *head = NULL, *temp;
 
 class LinkedList
 {
-    public:
+public:
     void insertEnd(int data)
     {
-        Node *newnode= new Node(data);
+        Node *newnode = new Node(data);
         Node *p;
-        p=head;
-        if(head==NULL)
+        p = head;
+        if (head == NULL)
         {
-            head=newnode;
-            newnode->next=NULL;
+            head = newnode;
+            newnode->next = NULL;
         }
         else
 
         {
-            while (p->next!=NULL)
+            while (p->next != NULL)
             {
-                p=p->next;
+                p = p->next;
             }
-            p->next=newnode;
-            newnode->next=NULL;
+            p->next = newnode;
+            newnode->next = NULL;
         }
-        
     }
 
-
-    void lastToFirst()  
+    void lastToFirst()
     {
-        Node * p=head;
-        Node *q=NULL;
-        while(p->next!=NULL)
+        Node *p = head;
+        Node *q = NULL;
+        while (p->next != NULL)
         {
-            q=p;
-            p=p->next;
+            q = p;
+            p = p->next;
         }
-        p->next=head;
-        head=p;
-        q->next=NULL;
+        p->next = head;
+        head = p;
+        q->next = NULL;
     }
 
-    //ANALYSIS:
-    //TIME Complexity: O(n) as we are traversing through the LL once where n is the number of nodes in the LL
-    //2 pointers are required
+    // ANALYSIS:
+    // TIME Complexity: O(n) as we are traversing through the LL once where n is the number of nodes in the LL
+    // 2 pointers are required
 
-
-
-    void printLL(Node * head)
+    void printLL(Node *head)
     {
-        while(head!=NULL)
+        while (head != NULL)
         {
-            cout<<head->data<<" ";
-            head=head->next;
+            cout << head->data << " ";
+            head = head->next;
         }
     }
 };
 
-
-
 int main()
 {
     LinkedList LL;
-    cout<<"Linked list"<<endl;
+    cout << "Linked list" << endl;
     LL.insertEnd(10);
     LL.insertEnd(20);
     LL.insertEnd(30);
     LL.insertEnd(40);
     LL.insertEnd(50);
     LL.printLL(head);
-    cout<<endl<<"after moving last element to first:"<<endl;
+    cout << endl
+         << "after moving last element to first:" << endl;
     LL.lastToFirst();
     LL.printLL(head);
     return 0;

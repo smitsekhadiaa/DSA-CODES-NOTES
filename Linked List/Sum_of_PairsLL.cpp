@@ -1,7 +1,7 @@
 // Find pairs with given sum in doubly linked list
-// Given a sorted doubly linked list of positive distinct elements, the task is to find pairs in a doubly-linked list whose sum is equal to given value x, without using any extra space? 
+// Given a sorted doubly linked list of positive distinct elements, the task is to find pairs in a doubly-linked list whose sum is equal to given value x, without using any extra space?
 
-// Example:  
+// Example:
 
 // Input : head : 1 <-> 2 <-> 4 <-> 5 <-> 6 <-> 8 <-> 9
 //         x = 7
@@ -19,12 +19,8 @@
 
 // The case when no pairs are present will be handled by the condition “first==second”
 
-
-
-
-
 // C++ program to find a pair with given sum x.
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 // structure of node of doubly linked list
@@ -56,8 +52,8 @@ void pairSum(struct Node *head, int x)
 		if ((first->data + second->data) == x)
 		{
 			found = true;
-			cout << "(" << first->data<< ", "
-				<< second->data << ")" << endl;
+			cout << "(" << first->data << ", "
+				 << second->data << ")" << endl;
 
 			// move first in forward direction
 			first = first->next;
