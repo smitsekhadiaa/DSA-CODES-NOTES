@@ -3,10 +3,12 @@
 
 using namespace std;
 /* Link list Node */
-struct Node {
+struct Node
+{
     int data;
     struct Node *next;
-    Node(int x) {
+    Node(int x)
+    {
         data = x;
         next = NULL;
     }
@@ -14,10 +16,9 @@ struct Node {
 
 struct Node *start = NULL;
 
-
- // } Driver Code Ends
+// } Driver Code Ends
 /*
- 
+
   Node is defined as
   struct Node {
     int data;
@@ -31,62 +32,57 @@ struct Node *start = NULL;
 */
 class Solution
 {
-    public:
-    //Function to sort a linked list of 0s, 1s and 2s.
-    Node* segregate(Node *head) {
-        
+public:
+    // Function to sort a linked list of 0s, 1s and 2s.
+    Node *segregate(Node *head)
+    {
+
         // Add code here
-        Node *p=head;
-        vector<int> v1,v2,v3;
-        while(p!=NULL)
+        Node *p = head;
+        vector<int> v1, v2, v3;
+        while (p != NULL)
         {
-            
-            if(p->data==0)
+
+            if (p->data == 0)
             {
                 v1.push_back(p->data);
-                p=p->next;
-                
+                p = p->next;
             }
-            else if(p->data==1)
+            else if (p->data == 1)
             {
                 v2.push_back(p->data);
-                p=p->next;
+                p = p->next;
             }
             else
             {
                 v3.push_back(p->data);
-                p=p->next;
+                p = p->next;
             }
-            
         }
-        p=head;
-        while(p!=NULL)
+        p = head;
+        while (p != NULL)
         {
-            
-            while(!v1.empty())
+
+            while (!v1.empty())
             {
-                p->data=0;
-                p=p->next;
+                p->data = 0;
+                p = p->next;
                 v1.pop_back();
             }
-            while(!v2.empty())
+            while (!v2.empty())
             {
-                p->data=1;
-                p=p->next;
+                p->data = 1;
+                p = p->next;
                 v2.pop_back();
             }
-            while(!v3.empty())
+            while (!v3.empty())
             {
-                p->data=2;
-                p=p->next;
+                p->data = 2;
+                p = p->next;
                 v3.pop_back();
             }
-           
-            
         }
         return head;
-        
-        
     }
 };
 // ANALYSIS:
@@ -96,8 +92,10 @@ class Solution
 // { Driver Code Starts.
 
 // Function to sort a linked list of 0s, 1s and 2s
-void printList(struct Node *Node) {
-    while (Node != NULL) {
+void printList(struct Node *Node)
+{
+    while (Node != NULL)
+    {
         printf("%d ", Node->data);
         Node = Node->next;
     }
@@ -105,19 +103,24 @@ void printList(struct Node *Node) {
 }
 
 /* Drier program to test above function*/
-void insert(int n1) {
+void insert(int n1)
+{
     int n, value, i;
     // scanf("%d",&n);
     n = n1;
     struct Node *temp;
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++)
+    {
         scanf("%d", &value);
 
-        if (i == 0) {
+        if (i == 0)
+        {
             start = new Node(value);
             temp = start;
             continue;
-        } else {
+        }
+        else
+        {
             temp->next = new Node(value);
             temp = temp->next;
             temp->next = NULL;
@@ -125,14 +128,16 @@ void insert(int n1) {
     }
 }
 
-int main() {
+int main()
+{
 
     int n;
 
     int t;
     scanf("%d", &t);
 
-    while (t--) {
+    while (t--)
+    {
         scanf("%d", &n);
 
         insert(n);
@@ -142,4 +147,4 @@ int main() {
     }
 
     return 0;
-}  // } Driver Code Ends
+} // } Driver Code Ends

@@ -1,5 +1,5 @@
 // { Driver Code Starts
-//Initial Template for C++
+// Initial Template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -7,82 +7,70 @@ using namespace std;
 struct Node
 {
     int data;
-    Node * next;
-    Node * prev;
-    Node (int x)
+    Node *next;
+    Node *prev;
+    Node(int x)
     {
-        data=x;
-        next=NULL;
-        prev=NULL;
+        data = x;
+        next = NULL;
+        prev = NULL;
     }
-        
 };
 
 Node *newNode(int data)
 {
-    Node *temp=new Node(data);
-    
+    Node *temp = new Node(data);
+
     return temp;
 }
 
-
-
-
 void displayList(Node *head)
 {
-    //Head to Tail
-    while(head->next)
+    // Head to Tail
+    while (head->next)
     {
-        cout<<head->data<<" ";
-        head=head->next;
+        cout << head->data << " ";
+        head = head->next;
     }
-    cout<<head->data;
-    
-    
-    
+    cout << head->data;
 }
 
-
-int getLength(Node * head)
+int getLength(Node *head)
 {
-    Node *temp=head;
-    
-    int count=0;
-    while(temp->next!=head)
+    Node *temp = head;
+
+    int count = 0;
+    while (temp->next != head)
     {
         count++;
-        temp=temp->next;
+        temp = temp->next;
     }
-    return count+1;
+    return count + 1;
 }
 
-
-
-
-bool verify(Node* head)
+bool verify(Node *head)
 {
-    int fl=0;
-    int bl=0;
-    
-    Node *temp=head;
-    
-    while(temp->next)
+    int fl = 0;
+    int bl = 0;
+
+    Node *temp = head;
+
+    while (temp->next)
     {
-        temp=temp->next;
+        temp = temp->next;
         fl++;
     }
-    
-    while(temp->prev)
+
+    while (temp->prev)
     {
-        temp=temp->prev;
+        temp = temp->prev;
         bl++;
     }
-    
-    return fl==bl;
+
+    return fl == bl;
 }
 
-
- // } Driver Code Ends
+// } Driver Code Ends
 /*
 struct Node
 {
@@ -95,68 +83,65 @@ struct Node
         next=NULL;
         prev=NULL;
     }
-        
+
 };
 */
-Node* reverseDLL(Node * head)
+Node *reverseDLL(Node *head)
 {
-    //Your code here
-    Node *p,*temp;
-    p=head;
-    while(p!=NULL)
+    // Your code here
+    Node *p, *temp;
+    p = head;
+    while (p != NULL)
     {
-        temp=p->next;
-        p->next=p->prev;
-        p->prev=temp;
-        p=p->prev;
-        if(p!=NULL && p->next==NULL)
+        temp = p->next;
+        p->next = p->prev;
+        p->prev = temp;
+        p = p->prev;
+        if (p != NULL && p->next == NULL)
         {
-            head=p;
+            head = p;
         }
-        
     }
     return head;
-    
 }
 //   ANALYSIS
 // TIME: O(n)
 // SPACE: O(1)
 
-
 // { Driver Code Starts.
 
-int main() {
-	int t;
-	cin>>t;
-	while(t--)
-	{
-	    int n;
-	    cin>>n;
-	    Node *head=NULL, *tail=NULL;
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        Node *head = NULL, *tail = NULL;
         int x;
-	    cin>>x;
-	    head = newNode(x);
-	    tail = head;
-	    
-	    for(int i=0;i<n - 1;i++)
-	    {
-	        cin>>x;
-	        Node* temp=newNode(x);
-	        tail->next=temp;
-	        temp->prev= tail;
-	        tail = temp;
-	    }
-	    head=reverseDLL(head);
-	    
-	    
-	    if(verify(head))
-	    displayList(head);
-	    else
-	    cout<<"Your pointers are not correctly connected";
- 
-	    cout<<endl;
-	}
-	return 0;
+        cin >> x;
+        head = newNode(x);
+        tail = head;
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            cin >> x;
+            Node *temp = newNode(x);
+            tail->next = temp;
+            temp->prev = tail;
+            tail = temp;
+        }
+        head = reverseDLL(head);
+
+        if (verify(head))
+            displayList(head);
+        else
+            cout << "Your pointers are not correctly connected";
+
+        cout << endl;
+    }
+    return 0;
 }
 
-  // } Driver Code Ends
+// } Driver Code Ends
