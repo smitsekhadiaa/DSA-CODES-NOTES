@@ -21,8 +21,6 @@
 
 // // Return an array of the index of the left-most letter being stamped at each turn. If we cannot obtain target from s within 10 * target.length turns, return an empty array.
 
- 
-
 // // Example 1:
 
 // // Input: stamp = "abc", target = "ababc"
@@ -39,7 +37,7 @@
 // // - Place stamp at index 3 to get "???abca".
 // // - Place stamp at index 0 to get "abcabca".
 // // - Place stamp at index 1 to get "aabcaca".
- 
+
 // class Solution {
 // public:
 //     bool canReplace(string &stamp,string &target,int pos){
@@ -50,8 +48,7 @@
 //         }
 //         return true;
 //     }
-    
-    
+
 //     int replace(string &stamp,string &target,int pos){
 //         int cnt=0;
 //         int m=stamp.size(),n=target.size();
@@ -63,17 +60,17 @@
 //         }
 //         return cnt;
 //     }
-    
+
 //     vector<int> movesToStamp(string stamp, string target) {
-        
+
 //         vector<int> ans;
-        
+
 //         int m=stamp.size(),n=target.size();
-        
+
 //         int count=0;
-        
+
 //         vector<int> vis(n+1,0);
-        
+
 //         while(count!=n){
 //             bool flag=false;
 //             for(int i=0;i<=n-m;i++){
