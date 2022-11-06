@@ -1,5 +1,5 @@
 # 450-DSA-NOTES
-C++ Solutions to the questions on 
+C++ Solutions and Handwritten notes to the questions on 
 <br>
   -DSA450 (https://450dsa.com/)
   <br>
