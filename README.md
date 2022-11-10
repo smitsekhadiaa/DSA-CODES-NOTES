@@ -5,4 +5,4 @@ C++ Solutions and Handwritten notes to the questions on
   <br>
   -Leetcode (https://leetcode.com/problemset/all/) 
   
-Handwritten notes - Each section contains PDF of the Handwritten Notes
+Handwritten notes - Each topic contains PDF of the Handwritten Notes
